@@ -5,11 +5,10 @@ module.exports.checkRow = function(puzzle, row, comparedNumber){
 	// iterate thru row and compare to comparedNumber and return result
 var result = false;
 
-
+// This is now broken to be fixed tomorrow.
 var x = (row*9);
-row = puzzle.substr(x, 9);
-
-	row = row.split('');
+// row = puzzle.substr(x, 9);
+row = puzzle.slice(row, (row + 9));
 	//console.log("+%j+", row1);
 	row.forEach(function(number) {
 		number = parseInt(number);
@@ -31,15 +30,16 @@ x = ((box*3) + x);
 y = ((box*3) + y);
 z = ((box*3) + z);
 
-var xString = puzzle.substr(x, 3);
-var yString = puzzle.substr(y, 3);
-var zString = puzzle.substr(z, 3);
+// var xString = puzzle.substr(x, 3);
+// var yString = puzzle.substr(y, 3);
+// var zString = puzzle.substr(z, 3);
+
+
 
 boxContents = xString+yString+zString;
 
 //console.log(boxContents);
 
-boxContents = boxContents.split('');
 //console.log("+%j+", boxContents1);
 boxContents.forEach(function(number) {
   number = parseInt(number);

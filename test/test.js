@@ -7,7 +7,8 @@ var _ = require('..');
 		// };
 
 var puzzle = '158 2  6 2   8  9  3  7 8 2 6 74      4 6 7      19 5 4 9 3  2  2  5   8 7  9 413';
-
+puzzle = puzzle.split('');
+console.log(puzzle);
 
 describe('checkRow()', function() {
 
