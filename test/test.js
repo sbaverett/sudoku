@@ -14,33 +14,33 @@ describe('checkRow1()', function() {
 	//row1
 
 	it('should check row1 for number 1', function() {
-		expect(_.checkRow(puzzle, 1, 1)).to.eql(true);
+		expect(_.checkRow(puzzle, 0, 1)).to.eql(true);
 	});
 
 	it('should check row1 for number 2', function() {
-		expect(_.checkRow(puzzle, 1, 2)).to.eql(true);
+		expect(_.checkRow(puzzle, 0, 2)).to.eql(true);
 	});
 	it('should check row1 for number 3', function() {
-		expect(_.checkRow(puzzle, 1, 3)).to.eql(false);
+		expect(_.checkRow(puzzle, 0, 3)).to.eql(false);
 	});
 	it('should check row1 for number 4', function() {
-		expect(_.checkRow(puzzle, 1, 4)).to.eql(false);
+		expect(_.checkRow(puzzle, 0, 4)).to.eql(false);
 	});
 	
 	//row2
 
 	it('should check row2 for number 1', function() {
-		expect(_.checkRow(puzzle, 2, 1)).to.eql(false);
+		expect(_.checkRow(puzzle, 1, 1)).to.eql(false);
 	});
 
 	it('should check row2 for number 2', function() {
-		expect(_.checkRow(puzzle, 2, 2)).to.eql(true);
+		expect(_.checkRow(puzzle, 1, 2)).to.eql(true);
 	});
 	it('should check row2 for number 3', function() {
-		expect(_.checkRow(puzzle, 2, 3)).to.eql(false);
+		expect(_.checkRow(puzzle, 1, 3)).to.eql(false);
 	});
 	it('should check row2 for number 4', function() {
-		expect(_.checkRow(puzzle, 2, 4)).to.eql(false);
+		expect(_.checkRow(puzzle, 1, 4)).to.eql(false);
 	});
 
 });
@@ -50,19 +50,19 @@ describe('checkBox()', function() {
 	//box1
 
 	it('should check box1 for number 1', function() {
-		expect(_.checkBox(puzzle, 1, 1)).to.eql(true);
+		expect(_.checkBox(puzzle, 2, 1)).to.eql(true);
 	});
 	
 	it('should check box1 for number 2', function() {
-		expect(_.checkBox(puzzle, 1, 2)).to.eql(true);
+		expect(_.checkBox(puzzle, 2, 2)).to.eql(true);
 	});
 	
 	it('should check box1 for number 3', function() {
-		expect(_.checkBox(puzzle, 1, 3)).to.eql(true);
+		expect(_.checkBox(puzzle, 2, 3)).to.eql(true);
 	});
 
 	it('should check box1 for number 4', function() {
-		expect(_.checkBox(puzzle, 1, 4)).to.eql(false);
+		expect(_.checkBox(puzzle, 2, 4)).to.eql(false);
 	});
 });
 

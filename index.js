@@ -5,16 +5,17 @@ module.exports.checkRow = function(puzzle, row, comparedNumber){
 	// iterate thru row and compare to comparedNumber and return result
 	
 	var result = false;
-	var row1 = puzzle.substr(0, 9);
-	var row2 = puzzle.substr(9, 9);
-	var row3 = puzzle.substr(18, 9);
-	var row4 = puzzle.substr(27, 9);
-	var row5 = puzzle.substr(36, 9);
-	var row6 = puzzle.substr(45, 9);
-	var row7 = puzzle.substr(54, 9);
-	var row8 = puzzle.substr(63, 9);
-	var row9 = puzzle.substr(72, 9);
+	var row0 = puzzle.substr(0, 9);
+	var row1 = puzzle.substr(9, 9);
+	var row2 = puzzle.substr(18, 9);
+	var row3 = puzzle.substr(27, 9);
+	var row4 = puzzle.substr(36, 9);
+	var row5 = puzzle.substr(45, 9);
+	var row6 = puzzle.substr(54, 9);
+	var row7 = puzzle.substr(63, 9);
+	var row8 = puzzle.substr(72, 9);
 
+	if (row === 0) row = row0;
 	if (row === 1) row = row1;
 	if (row === 2) row = row2;
 	if (row === 3) row = row3;
@@ -23,7 +24,6 @@ module.exports.checkRow = function(puzzle, row, comparedNumber){
 	if (row === 6) row = row6;
 	if (row === 7) row = row7;
 	if (row === 8) row = row8;
-	if (row === 9) row = row9;
 
 
 	row = row.split('');
@@ -39,5 +39,6 @@ module.exports.checkRow = function(puzzle, row, comparedNumber){
 };
 
 module.exports.checkBox = function(puzzle, box, comparedNumber) {
+
 
 };
