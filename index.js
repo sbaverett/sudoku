@@ -1,6 +1,4 @@
 
-
-
 module.exports.checkRow = function(puzzle, row, comparedNumber){
 	// get the first nine characters from puzzle...
 	// put those into a array[]
@@ -38,4 +36,8 @@ module.exports.checkRow = function(puzzle, row, comparedNumber){
 		}
 	});
 	return result;
+};
+
+module.exports.checkBox = function(puzzle, box, comparedNumber) {
+
 };
