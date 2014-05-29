@@ -14,31 +14,39 @@ module.exports.checkRow = function(puzzle, row, comparedNumber){
 };
 
 module.exports.checkBox = function(puzzle, box, comparedNumber) {
-var result = false;
-var x = 0;
-var y = 9;
-var z = 18;
-
-x = ((box*3) + x);
-y = ((box*3) + y);
-z = ((box*3) + z);
-
-// var xString = puzzle.substr(x, 3);
-// var yString = puzzle.substr(y, 3);
-// var zString = puzzle.substr(z, 3);
+// 	var result = false;
+// 	if (box === 0 || box === 3 || box === 6)
+// 		// we want to multiply the row number by 9 and use at start in splice,
+// 		// end splice at start plus 3
+// 		//splice the puzzle
+// 		//do same thing for next two rows
+// 		else-if (box === 1 || box === 4 || box === 7)
 
 
 
-boxContents = xString+yString+zString;
+// // boxContents = xString+yString+zString;
 
-//console.log(boxContents);
+// //console.log(boxContents);
 
-//console.log("+%j+", boxContents1);
-boxContents.forEach(function(number) {
-  number = parseInt(number);
-//  console.log(number);
-    result = (number === comparedNumber);
-});
-return result;
+// //console.log("+%j+", boxContents1);
+// boxContents.forEach(function(number) {
+//   number = parseInt(number);
+// //  console.log(number);
+//     result = (number === comparedNumber);
+// });
+// return result;
 
 };
+module.exports.defineBox = function(box) {
+	var rows = [];
+	if (box === 0 || box === 1 || box === 2) {
+		rows = [0, 1, 2]		 
+	};
+	else if	(box === 3 || box === 4 || box === 5) {
+		rows = [3, 4, 5]
+	};
+	else if (box === 6 || box === 7 || box === 8) {
+		rows = [6, 7, 8]
+	};
+
+}

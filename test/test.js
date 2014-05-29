@@ -86,6 +86,12 @@ describe.skip('checkBox()', function() {
   });
 });
 
+describe("defineBox()", function() {
+	it('should define values in box0 correctly', function() {
+		expect(_.defineBox(puzzle, 0)).to.eql([0, 1, 2, 9, 10, 11, 18, 19, 20]);
+	});
+});
+
 // describe('checkColumn()', function() {
 
 // 	//column1
@@ -106,3 +112,12 @@ describe.skip('checkBox()', function() {
 // 		expect(_.checkColumn(puzzle, 2, 1)).to.eql(false);
 // 	});
 // });
+
+
+
+
+
+
+
+
+
