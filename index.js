@@ -1,23 +1,16 @@
 
 module.exports.checkRow = function(puzzle, row, comparedNumber){
-	// get the first nine characters from puzzle...
-	// put those into a array[]
-	// iterate thru row and compare to comparedNumber and return result
-var result = false;
+  var result = false;
 
-// This is now broken to be fixed tomorrow.
-var x = (row*9);
-// row = puzzle.substr(x, 9);
-row = puzzle.slice(row, (row + 9));
-	//console.log("+%j+", row1);
-	row.forEach(function(number) {
-		number = parseInt(number);
-	//	console.log(number);
-		if (number === comparedNumber) {
-			result = true;
-		}
-	});
-	return result;
+  var x = (row*9);
+  row = puzzle.slice(x, (x + 9));
+  	row.forEach(function(number) {
+  		number = parseInt(number);
+  		if (number === comparedNumber){
+        result = true;
+      }
+  	});
+  	return result;
 };
 
 module.exports.checkBox = function(puzzle, box, comparedNumber) {
@@ -44,9 +37,7 @@ boxContents = xString+yString+zString;
 boxContents.forEach(function(number) {
   number = parseInt(number);
 //  console.log(number);
-  if (number === comparedNumber) {
-    result = true;
-  }
+    result = (number === comparedNumber);
 });
 return result;
 
