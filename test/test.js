@@ -87,9 +87,15 @@ describe.skip('checkBox()', function() {
 });
 
 describe("defineBox()", function() {
-	it('should define values in box0 correctly', function() {
-		expect(_.defineBox(puzzle, 0)).to.eql([0, 1, 2, 9, 10, 11, 18, 19, 20]);
-	});
+  it('should define values in box0 correctly', function() {
+    expect(_.defineBox(0)).to.eql([0, 1, 2, 9, 10, 11, 18, 19, 20]);
+  });
+  it('should define values in box5 correctly', function() {
+    expect(_.defineBox(5)).to.eql([33, 34, 35, 42, 43, 44, 51, 52, 53]);
+  });
+  it('should define values in box8 correctly', function() {
+    expect(_.defineBox(8)).to.eql([60, 61, 62, 69, 70, 71, 78, 79, 80]);
+  });
 });
 
 // describe('checkColumn()', function() {
