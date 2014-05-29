@@ -7,10 +7,12 @@
     "chai": "^1.9.1"
   },
   "devDependencies": {
+    "coveralls": "^2.10.0",
+    "istanbul": "^0.2.10",
     "mocha": "^1.20.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report $(if [ \"$TRAVIS\" ]; then echo lcovonly; else echo html; fi) -- && if [ \"$TRAVIS\" ]; then cat ./coverage/lcov.info | ./node_modules/.bin/coveralls; fi"
   },
   "repository": {
     "type": "git",
