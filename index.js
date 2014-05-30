@@ -97,15 +97,16 @@ var checkBoxCol = function(puzzle, boxColNum, comparedNumber, isBoxOrCol) {
     array = defineColumn(boxColNum);
   }
 
-    var contents = array.map(function(index) {
-      return puzzle[index];
-    });
-    contents.forEach(function(number) {
-      number = parseInt(number);
-      if (number === comparedNumber){
-        result = true;
-      }
-    });
+  var contents = array.map(function(index) {
+    return puzzle[index];
+  });
+  contents.forEach(function(number) {
+    number = parseInt(number);
+    if (number === comparedNumber){
+      result = true;
+    }
+  });
+
   return result;
 };
 
@@ -117,19 +118,18 @@ module.exports.checkColumn = function(puzzle, boxColNum, comparedNumber) {
   return checkBoxCol(puzzle, boxColNum, comparedNumber, 'column');
 };
 
-
 module.exports.checkRow = function(puzzle, row, comparedNumber){
   var result = false;
 
   var x = (row*9);
   row = puzzle.slice(x, (x + 9));
-    row.forEach(function(number) {
-      number = parseInt(number);
-      if (number === comparedNumber){
-        result = true;
-      }
-    });
-    return result;
+  row.forEach(function(number) {
+    number = parseInt(number);
+    if (number === comparedNumber){
+      result = true;
+    }
+  });
+  return result;
 };
 
 module.exports.solve = function(indexNumber) {
