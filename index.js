@@ -59,9 +59,9 @@ var defineBox = module.exports.defineBox = function(box) {
   return resultingArray;
 };
 
-var checkHelper = function(puzzle, boxColNum, comparedNumber, defineFn) {
+var checkHelper = function(puzzle, itemNumber, comparedNumber, defineFn) {
   var result = false;
-  var array = defineFn(boxColNum);
+  var array = defineFn(itemNumber);
   return _.any(array, function(index) {
     var number = parseInt(puzzle[index]);
     return number === comparedNumber;
