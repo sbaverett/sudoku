@@ -49,70 +49,70 @@ describe('checkBoxCol()', function() {
 
 	//box0
   it('should check box0 for number 1', function() {
-    expect(_.checkBoxCol(puzzle, 0, 1, 'box')).to.eql(true);
+    expect(_.checkBox(puzzle, 0, 1)).to.eql(true);
   });
 
   it('should check box0 for number 2', function() {
-    expect(_.checkBoxCol(puzzle, 0, 2, 'box')).to.eql(true);
+    expect(_.checkBox(puzzle, 0, 2)).to.eql(true);
   });
 
   it('should check box0 for number 3', function() {
-    expect(_.checkBoxCol(puzzle, 0, 3, 'box')).to.eql(true);
+    expect(_.checkBox(puzzle, 0, 3)).to.eql(true);
   });
 
   it('should check box0 for number 4', function() {
-    expect(_.checkBoxCol(puzzle, 0, 4, 'box')).to.eql(false);
+    expect(_.checkBox(puzzle, 0, 4)).to.eql(false);
   });
 
   //box1
   it('should check box1 for number 1', function() {
-    expect(_.checkBoxCol(puzzle, 1, 1, 'box')).to.eql(false);
+    expect(_.checkBox(puzzle, 1, 1)).to.eql(false);
   });
 
   it('should check box1 for number 2', function() {
-    expect(_.checkBoxCol(puzzle, 1, 2, 'box')).to.eql(true);
+    expect(_.checkBox(puzzle, 1, 2)).to.eql(true);
   });
 
   it('should check box1 for number 3', function() {
-    expect(_.checkBoxCol(puzzle, 1, 3, 'box')).to.eql(false);
+    expect(_.checkBox(puzzle, 1, 3)).to.eql(false);
   });
 
   it('should check box1 for number 4', function() {
-    expect(_.checkBoxCol(puzzle, 1, 4, 'box')).to.eql(false);
+    expect(_.checkBox(puzzle, 1, 4)).to.eql(false);
   });
 
   //column0
   it('should check column0 for number 1', function() {
-    expect(_.checkBoxCol(puzzle, 0, 1,'column')).to.eql(true);
+    expect(_.checkColumn(puzzle, 0, 1)).to.eql(true);
   });
 
   it('should check column0 for number 2', function() {
-    expect(_.checkBoxCol(puzzle, 0, 2,'column')).to.eql(true);
+    expect(_.checkColumn(puzzle, 0, 2)).to.eql(true);
   });
 
   it('should check column0 for number 3', function() {
-    expect(_.checkBoxCol(puzzle, 0, 3,'column')).to.eql(false);
+    expect(_.checkColumn(puzzle, 0, 3)).to.eql(false);
   });
 
   it('should check column0 for number 4', function() {
-    expect(_.checkBoxCol(puzzle, 0, 4,'column')).to.eql(true);
+    expect(_.checkColumn(puzzle, 0, 4)).to.eql(true);
   });
 
   //column1
   it('should check column1 for number 1', function() {
-    expect(_.checkBoxCol(puzzle, 1, 1,'column')).to.eql(false);
+    expect(_.checkColumn(puzzle, 1, 1)).to.eql(false);
   });
 
   it('should check column1 for number 2', function() {
-    expect(_.checkBoxCol(puzzle, 1, 2,'column')).to.eql(true);
+    expect(_.checkColumn(puzzle, 1, 2)).to.eql(true);
   });
 
   it('should check column1 for number 3', function() {
-    expect(_.checkBoxCol(puzzle, 1, 3,'column')).to.eql(true);
+    expect(_.checkColumn(puzzle, 1, 3)).to.eql(true);
   });
 
   it('should check column1 for number 4', function() {
-    expect(_.checkBoxCol(puzzle, 1, 4,'column')).to.eql(false);
+    expect(_.checkColumn(puzzle, 1, 4)).to.eql(false);
   });
 });
 

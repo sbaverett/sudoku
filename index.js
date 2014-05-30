@@ -68,7 +68,7 @@ var defineBox = module.exports.defineBox = function(box) {
   return resultingArray;
 };
 
-module.exports.checkBoxCol = function(puzzle, boxColNum, comparedNumber, isBoxOrCol) {
+var checkBoxCol = function(puzzle, boxColNum, comparedNumber, isBoxOrCol) {
   var result = false;
   var array = [];
   if (isBoxOrCol === 'box'){
@@ -89,6 +89,15 @@ module.exports.checkBoxCol = function(puzzle, boxColNum, comparedNumber, isBoxOr
     });
   return result;
 };
+
+module.exports.checkBox = function(puzzle, boxColNum, comparedNumber) {
+  return checkBoxCol(puzzle, boxColNum, comparedNumber, 'box');
+};
+
+module.exports.checkColumn = function(puzzle, boxColNum, comparedNumber) {
+  return checkBoxCol(puzzle, boxColNum, comparedNumber, 'column');
+};
+
 
 module.exports.checkRow = function(puzzle, row, comparedNumber){
   var result = false;
