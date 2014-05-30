@@ -145,3 +145,17 @@ describe('defineColumn()', function() {
     expect(_.defineColumn(8)).to.eql([8, 17, 26, 35, 44, 53, 62, 71, 80]);
   });
 });
+
+describe('defineRow()', function() {
+  it('should give index for row 5', function() {
+    expect(_.defineRow(5)).to.be.eql([45, 46, 47, 48, 49, 50, 51, 52, 53]);
+  });
+});
+//solve tests
+
+describe('solve()', function() {
+  it('should give value for index 6', function() {
+    expect(_.solve(6)).to.eql(3);
+  });
+});
+

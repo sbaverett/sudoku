@@ -19,6 +19,25 @@ var defineColumn = module.exports.defineColumn = function(column) {
   return resultingArray;
 };
 
+var defineRow = module.exports.defineRow = function(row) {
+  var resultingArray = [];
+  var counter = 0;
+  var number = row;
+  var continueDefining = function(number, counter) {
+    number = number + 1;
+      if (counter < 8) {
+        resultingArray.push(number);
+        continueDefining(number, counter + 1);
+      }
+  };
+  var startDefining = function(row) {
+    resultingArray.push(row);
+    continueDefining(row, 0);
+  };
+  startDefining(row * 9);
+  return resultingArray;
+};
+
 var defineBox = module.exports.defineBox = function(box) {
 	var rows = [];
   var resultingArray = [];
@@ -112,3 +131,8 @@ module.exports.checkRow = function(puzzle, row, comparedNumber){
     });
     return result;
 };
+
+module.exports.solve = function(indexNumber) {
+  //check if number is in row, col and box
+  //make array 1-9,  
+}
