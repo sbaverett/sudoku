@@ -1,17 +1,22 @@
 'use strict';
 
-module.exports.checkRow = function(puzzle, row, comparedNumber){
-  var result = false;
-
-  var x = (row*9);
-  row = puzzle.slice(x, (x + 9));
-  	row.forEach(function(number) {
-  		number = parseInt(number);
-  		if (number === comparedNumber){
-        result = true;
+var defineColumn = module.exports.defineColumn = function(column) {
+  var resultingArray = [];
+  var counter = 0;
+  var number = column;
+  var continueDefining = function(number, counter) {
+    number = number + 9;
+      if (counter < 8) {
+        resultingArray.push(number);
+        continueDefining(number, counter + 1);
       }
-  	});
-  	return result;
+  };
+  var startDefining = function(column) {
+    resultingArray.push(column);
+    continueDefining(column, 0);
+  };
+  startDefining(column);
+  return resultingArray;
 };
 
 var defineBox = module.exports.defineBox = function(box) {
@@ -63,14 +68,20 @@ var defineBox = module.exports.defineBox = function(box) {
   return resultingArray;
 };
 
-module.exports.checkBox = function(puzzle, box, comparedNumber) {
+module.exports.checkBoxCol = function(puzzle, boxColNum, comparedNumber, isBoxOrCol) {
   var result = false;
   var array = [];
-  array = defineBox(box);
-    var boxContents = array.map(function(index) {
+  if (isBoxOrCol === 'box'){
+    array = defineBox(boxColNum);
+  }
+  else if (isBoxOrCol === 'column'){
+    array = defineColumn(boxColNum);
+  }
+
+    var contents = array.map(function(index) {
       return puzzle[index];
     });
-    boxContents.forEach(function(number) {
+    contents.forEach(function(number) {
       number = parseInt(number);
       if (number === comparedNumber){
         result = true;
@@ -79,21 +90,16 @@ module.exports.checkBox = function(puzzle, box, comparedNumber) {
   return result;
 };
 
-module.exports.defineColumn = function(column) {
-	var resultingArray = [];
-	var counter = 0;
-	var number = column;
-	var continueDefining = function(number, counter) {
-		number = number + 9;
-			if (counter < 8) {
-				resultingArray.push(number);
-				continueDefining(number, counter + 1);
-			}
-	};
-	var startDefining = function(column) {
-		resultingArray.push(column);
-		continueDefining(column, 0);
-	};
-	startDefining(column);
-	return resultingArray;
+module.exports.checkRow = function(puzzle, row, comparedNumber){
+  var result = false;
+
+  var x = (row*9);
+  row = puzzle.slice(x, (x + 9));
+    row.forEach(function(number) {
+      number = parseInt(number);
+      if (number === comparedNumber){
+        result = true;
+      }
+    });
+    return result;
 };
