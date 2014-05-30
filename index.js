@@ -1,7 +1,10 @@
 'use strict';
 
+var _ = require('lodash');
+
 var defineColumn = module.exports.defineColumn = function(column) {
   var resultingArray = [];
+
   var counter = 0;
   var number = column;
   var continueDefining = function(number, counter) {
