@@ -62,18 +62,10 @@ var defineBox = module.exports.defineBox = function(box) {
 var checkHelper = function(puzzle, boxColNum, comparedNumber, defineFn) {
   var result = false;
   var array = defineFn(boxColNum);
-
-  var contents = array.map(function(index) {
-    return puzzle[index];
+  return _.any(array, function(index) {
+    var number = parseInt(puzzle[index]);
+    return number === comparedNumber;
   });
-  contents.forEach(function(number) {
-    number = parseInt(number);
-    if (number === comparedNumber){
-      result = true;
-    }
-  });
-
-  return result;
 };
 
 module.exports.checkBox = function(puzzle, boxColNum, comparedNumber) {
