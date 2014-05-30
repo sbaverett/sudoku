@@ -77,17 +77,7 @@ module.exports.checkColumn = function(puzzle, boxColNum, comparedNumber) {
 };
 
 module.exports.checkRow = function(puzzle, row, comparedNumber){
-  var result = false;
-
-  var x = (row*9);
-  row = puzzle.slice(x, (x + 9));
-  row.forEach(function(number) {
-    number = parseInt(number);
-    if (number === comparedNumber){
-      result = true;
-    }
-  });
-  return result;
+  return checkHelper(puzzle, row, comparedNumber, defineRow);
 };
 
 module.exports.solve = function(indexNumber) {
