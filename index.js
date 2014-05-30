@@ -82,3 +82,25 @@ var defineBox = module.exports.defineBox = function(box) {
   }
   return resultingArray;
 };
+module.exports.defineColumn = function(column) {
+	var resultingArray = [];
+	var counter = 0;
+	var number = column;
+	var continueDefining = function(number, counter) {
+		number = number + 9;
+			if (counter < 8) {
+				resultingArray.push(number);
+				continueDefining(number, counter + 1);		
+			}
+	};
+	var startDefining = function(column) {
+		resultingArray.push(column);
+		continueDefining(column, 0); 
+	};
+	startDefining(column);
+	console.log(resultingArray);
+	return resultingArray;
+
+};
+
+

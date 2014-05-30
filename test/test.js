@@ -98,6 +98,11 @@ describe("defineBox()", function() {
   });
 });
 
+describe('defineColumn()', function() {
+	it.only('should give index for column 0', function() {
+		expect(_.defineColumn(0)).to.eql([0, 9, 18, 27, 36, 45, 54, 63, 72]);
+	});
+});
 // describe('checkColumn()', function() {
 
 // 	//column1
