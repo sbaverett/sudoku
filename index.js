@@ -68,12 +68,12 @@ var checkHelper = function(puzzle, boxColNum, comparedNumber, defineFn) {
   });
 };
 
-module.exports.checkBox = function(puzzle, boxColNum, comparedNumber) {
-  return checkHelper(puzzle, boxColNum, comparedNumber, defineBox);
+module.exports.checkBox = function(puzzle, box, comparedNumber) {
+  return checkHelper(puzzle, box, comparedNumber, defineBox);
 };
 
-module.exports.checkColumn = function(puzzle, boxColNum, comparedNumber) {
-  return checkHelper(puzzle, boxColNum, comparedNumber, defineColumn);
+module.exports.checkColumn = function(puzzle, col, comparedNumber) {
+  return checkHelper(puzzle, col, comparedNumber, defineColumn);
 };
 
 module.exports.checkRow = function(puzzle, row, comparedNumber){
