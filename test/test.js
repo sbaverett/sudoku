@@ -86,7 +86,7 @@ describe('checkBox()', function() {
   });
 });
 
-describe("defineBox()", function() {
+describe('defineBox()', function() {
   it('should define values in box0 correctly', function() {
     expect(_.defineBox(0)).to.eql([0, 1, 2, 9, 10, 11, 18, 19, 20]);
   });
@@ -99,30 +99,19 @@ describe("defineBox()", function() {
 });
 
 describe('defineColumn()', function() {
-	it.only('should give index for column 0', function() {
-		expect(_.defineColumn(0)).to.eql([0, 9, 18, 27, 36, 45, 54, 63, 72]);
-	});
+  it('should give index for column 0', function() {
+    expect(_.defineColumn(0)).to.eql([0, 9, 18, 27, 36, 45, 54, 63, 72]);
+  });
+  it('should give index for column 3', function() {
+    expect(_.defineColumn(3)).to.eql([3, 12, 21, 30, 39, 48, 57, 66, 75]);
+  });
+  it('should give index for column 5', function() {
+    expect(_.defineColumn(5)).to.eql([5, 14, 23, 32, 41, 50, 59, 68, 77]);
+  });
+  it('should give index for column 8', function() {
+    expect(_.defineColumn(8)).to.eql([8, 17, 26, 35, 44, 53, 62, 71, 80]);
+  });
 });
-// describe('checkColumn()', function() {
-
-// 	//column1
-
-// 	it('should check column1 for number 1', function() {
-// 		expect(_.checkColumn(puzzle, 2, 1)).to.eql(false);
-// 	});
-
-// 	it('should check row2 for number 1', function() {
-// 		expect(_.checkColumn(puzzle, 2, 1)).to.eql(false);
-// 	});
-
-// 	it('should check row2 for number 1', function() {
-// 		expect(_.checkColumn(puzzle, 2, 1)).to.eql(false);
-// 	});
-
-// 	it('should check row2 for number 1', function() {
-// 		expect(_.checkColumn(puzzle, 2, 1)).to.eql(false);
-// 	});
-// });
 
 
 
