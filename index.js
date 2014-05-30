@@ -1,3 +1,4 @@
+'use strict';
 
 module.exports.checkRow = function(puzzle, row, comparedNumber){
   var result = false;
@@ -14,30 +15,26 @@ module.exports.checkRow = function(puzzle, row, comparedNumber){
 };
 
 module.exports.checkBox = function(puzzle, box, comparedNumber) {
-// 	var result = false;
-// 	if (box === 0 || box === 3 || box === 6)
-// 		// we want to multiply the row number by 9 and use at start in splice,
-// 		// end splice at start plus 3
-// 		//splice the puzzle
-// 		//do same thing for next two rows
-// 		else-if (box === 1 || box === 4 || box === 7)
-
-
-
-// // boxContents = xString+yString+zString;
-
-// //console.log(boxContents);
-
-// //console.log("+%j+", boxContents1);
-// boxContents.forEach(function(number) {
-//   number = parseInt(number);
-// //  console.log(number);
-//     result = (number === comparedNumber);
-// });
-// return result;
-
+	var result = false;
+	var array = [];
+	array = defineBox(box);
+	  console.log(puzzle);
+	  // console.log(array);
+	  var boxContents = array.map(function(index) {
+	  	return puzzle[index];
+	  });
+	 	console.log(boxContents);
+		boxContents.forEach(function(number) {
+  		number = parseInt(number);
+ 			console.log(number);
+  		if (number === comparedNumber){
+        result = true;
+      }
+		});
+	return result;
 };
-module.exports.defineBox = function(box) {
+
+var defineBox = module.exports.defineBox = function(box) {
 	var rows = [];
   var resultingArray = [];
 
@@ -53,7 +50,6 @@ module.exports.defineBox = function(box) {
 
   if (box === 0 || box === 3 || box === 6){
     rows.forEach(function(number){
-      //number = parseInt(number);
       number = number * 9;
       resultingArray.push(number);
       number = number + 1;
@@ -65,7 +61,6 @@ module.exports.defineBox = function(box) {
 
   else if (box === 1 || box === 4 || box === 7){
     rows.forEach(function(number){
-      //number = parseInt(number);
       number = ((number * 9) + 3);
       resultingArray.push(number);
       number = number + 1;
@@ -77,7 +72,6 @@ module.exports.defineBox = function(box) {
 
   else if (box === 2 || box === 5 || box === 8){
     rows.forEach(function(number){
-      //number = parseInt(number);
       number = ((number * 9) + 6);
       resultingArray.push(number);
       number = number + 1;
@@ -88,5 +82,3 @@ module.exports.defineBox = function(box) {
   }
   return resultingArray;
 };
-
-

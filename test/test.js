@@ -52,7 +52,7 @@ describe('checkBox()', function() {
 
 	//box0
 
-  it.only('should check box0 for number 1', function() {
+  it('should check box0 for number 1', function() {
     expect(_.checkBox(puzzle, 0, 1)).to.eql(true);
   });
 
