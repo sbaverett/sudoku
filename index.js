@@ -87,15 +87,9 @@ var defineBox = module.exports.defineBox = function(box) {
   return resultingArray;
 };
 
-var checkBoxCol = function(puzzle, boxColNum, comparedNumber, isBoxOrCol) {
+var checkHelper = function(puzzle, boxColNum, comparedNumber, defineFn) {
   var result = false;
-  var array = [];
-  if (isBoxOrCol === 'box'){
-    array = defineBox(boxColNum);
-  }
-  else if (isBoxOrCol === 'column'){
-    array = defineColumn(boxColNum);
-  }
+  var array = defineFn(boxColNum);
 
   var contents = array.map(function(index) {
     return puzzle[index];
@@ -111,11 +105,11 @@ var checkBoxCol = function(puzzle, boxColNum, comparedNumber, isBoxOrCol) {
 };
 
 module.exports.checkBox = function(puzzle, boxColNum, comparedNumber) {
-  return checkBoxCol(puzzle, boxColNum, comparedNumber, 'box');
+  return checkHelper(puzzle, boxColNum, comparedNumber, defineBox);
 };
 
 module.exports.checkColumn = function(puzzle, boxColNum, comparedNumber) {
-  return checkBoxCol(puzzle, boxColNum, comparedNumber, 'column');
+  return checkHelper(puzzle, boxColNum, comparedNumber, defineColumn);
 };
 
 module.exports.checkRow = function(puzzle, row, comparedNumber){
