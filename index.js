@@ -11,52 +11,15 @@ var defineRow = module.exports.defineRow = function(row) {
 };
 
 var defineBox = module.exports.defineBox = function(box) {
-	var rows = [];
-  var resultingArray = [];
-
-	if (box === 0 || box === 1 || box === 2) {
-		rows = [0, 1, 2];
-	}
-	else if	(box === 3 || box === 4 || box === 5) {
-		rows = [3, 4, 5];
-	}
-	else if (box === 6 || box === 7 || box === 8) {
-		rows = [6, 7, 8];
-	}
-
-  if (box === 0 || box === 3 || box === 6){
-    rows.forEach(function(number){
-      number = number * 9;
-      resultingArray.push(number);
-      number = number + 1;
-      resultingArray.push(number);
-      number = number + 1;
-      resultingArray.push(number);
-    });
-  }
-
-  else if (box === 1 || box === 4 || box === 7){
-    rows.forEach(function(number){
-      number = ((number * 9) + 3);
-      resultingArray.push(number);
-      number = number + 1;
-      resultingArray.push(number);
-      number = number + 1;
-      resultingArray.push(number);
-    });
-  }
-
-  else if (box === 2 || box === 5 || box === 8){
-    rows.forEach(function(number){
-      number = ((number * 9) + 6);
-      resultingArray.push(number);
-      number = number + 1;
-      resultingArray.push(number);
-      number = number + 1;
-      resultingArray.push(number);
-    });
-  }
-  return resultingArray;
+  var subRange = function(row, col) {
+    return _.range(row * 9 + col, row * 9 + col + 3);
+  };
+  var row = Math.floor(box / 3) * 3;
+  var col = box % 3 * 3;
+  return []
+    .concat(subRange(row + 0, col))
+    .concat(subRange(row + 1, col))
+    .concat(subRange(row + 2, col));
 };
 
 var checkHelper = function(puzzle, itemNumber, comparedNumber, defineFn) {
