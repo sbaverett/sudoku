@@ -3,23 +3,7 @@
 var _ = require('lodash');
 
 var defineColumn = module.exports.defineColumn = function(column) {
-  var resultingArray = [];
-
-  var counter = 0;
-  var number = column;
-  var continueDefining = function(number, counter) {
-    number = number + 9;
-      if (counter < 8) {
-        resultingArray.push(number);
-        continueDefining(number, counter + 1);
-      }
-  };
-  var startDefining = function(column) {
-    resultingArray.push(column);
-    continueDefining(column, 0);
-  };
-  startDefining(column);
-  return resultingArray;
+  return _.range(column, 81, 9);
 };
 
 var defineRow = module.exports.defineRow = function(row) {
