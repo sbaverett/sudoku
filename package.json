@@ -4,7 +4,8 @@
   "description": "sudoku solver",
   "main": "index.js",
   "dependencies": {
-    "chai": "^1.9.1"
+    "chai": "^1.9.1",
+    "lodash": "^2.4.1"
   },
   "devDependencies": {
     "coveralls": "^2.10.0",

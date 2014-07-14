@@ -1,135 +1,46 @@
 'use strict';
 
+var _ = require('lodash');
+
 var defineColumn = module.exports.defineColumn = function(column) {
-  var resultingArray = [];
-  var counter = 0;
-  var number = column;
-  var continueDefining = function(number, counter) {
-    number = number + 9;
-      if (counter < 8) {
-        resultingArray.push(number);
-        continueDefining(number, counter + 1);
-      }
-  };
-  var startDefining = function(column) {
-    resultingArray.push(column);
-    continueDefining(column, 0);
-  };
-  startDefining(column);
-  return resultingArray;
+  return _.range(column, 81, 9);
 };
 
 var defineRow = module.exports.defineRow = function(row) {
-  var resultingArray = [];
-  var counter = 0;
-  var number = row;
-  var continueDefining = function(number, counter) {
-    number = number + 1;
-      if (counter < 8) {
-        resultingArray.push(number);
-        continueDefining(number, counter + 1);
-      }
-  };
-  var startDefining = function(row) {
-    resultingArray.push(row);
-    continueDefining(row, 0);
-  };
-  startDefining(row * 9);
-  return resultingArray;
+  return _.range(row * 9, (row + 1) * 9);
 };
 
 var defineBox = module.exports.defineBox = function(box) {
-	var rows = [];
-  var resultingArray = [];
-
-	if (box === 0 || box === 1 || box === 2) {
-		rows = [0, 1, 2];
-	}
-	else if	(box === 3 || box === 4 || box === 5) {
-		rows = [3, 4, 5];
-	}
-	else if (box === 6 || box === 7 || box === 8) {
-		rows = [6, 7, 8];
-	}
-
-  if (box === 0 || box === 3 || box === 6){
-    rows.forEach(function(number){
-      number = number * 9;
-      resultingArray.push(number);
-      number = number + 1;
-      resultingArray.push(number);
-      number = number + 1;
-      resultingArray.push(number);
-    });
-  }
-
-  else if (box === 1 || box === 4 || box === 7){
-    rows.forEach(function(number){
-      number = ((number * 9) + 3);
-      resultingArray.push(number);
-      number = number + 1;
-      resultingArray.push(number);
-      number = number + 1;
-      resultingArray.push(number);
-    });
-  }
-
-  else if (box === 2 || box === 5 || box === 8){
-    rows.forEach(function(number){
-      number = ((number * 9) + 6);
-      resultingArray.push(number);
-      number = number + 1;
-      resultingArray.push(number);
-      number = number + 1;
-      resultingArray.push(number);
-    });
-  }
-  return resultingArray;
+  var subRange = function(row, col) {
+    return _.range(row * 9 + col, row * 9 + col + 3);
+  };
+  var row = Math.floor(box / 3) * 3;
+  var col = box % 3 * 3;
+  return []
+    .concat(subRange(row + 0, col))
+    .concat(subRange(row + 1, col))
+    .concat(subRange(row + 2, col));
 };
 
-var checkBoxCol = function(puzzle, boxColNum, comparedNumber, isBoxOrCol) {
+var checkHelper = function(puzzle, itemNumber, comparedNumber, defineFn) {
   var result = false;
-  var array = [];
-  if (isBoxOrCol === 'box'){
-    array = defineBox(boxColNum);
-  }
-  else if (isBoxOrCol === 'column'){
-    array = defineColumn(boxColNum);
-  }
-
-    var contents = array.map(function(index) {
-      return puzzle[index];
-    });
-    contents.forEach(function(number) {
-      number = parseInt(number);
-      if (number === comparedNumber){
-        result = true;
-      }
-    });
-  return result;
+  var array = defineFn(itemNumber);
+  return _.any(array, function(index) {
+    var number = parseInt(puzzle[index]);
+    return number === comparedNumber;
+  });
 };
 
-module.exports.checkBox = function(puzzle, boxColNum, comparedNumber) {
-  return checkBoxCol(puzzle, boxColNum, comparedNumber, 'box');
+module.exports.checkBox = function(puzzle, box, comparedNumber) {
+  return checkHelper(puzzle, box, comparedNumber, defineBox);
 };
 
-module.exports.checkColumn = function(puzzle, boxColNum, comparedNumber) {
-  return checkBoxCol(puzzle, boxColNum, comparedNumber, 'column');
+module.exports.checkColumn = function(puzzle, col, comparedNumber) {
+  return checkHelper(puzzle, col, comparedNumber, defineColumn);
 };
-
 
 module.exports.checkRow = function(puzzle, row, comparedNumber){
-  var result = false;
-
-  var x = (row*9);
-  row = puzzle.slice(x, (x + 9));
-    row.forEach(function(number) {
-      number = parseInt(number);
-      if (number === comparedNumber){
-        result = true;
-      }
-    });
-    return result;
+  return checkHelper(puzzle, row, comparedNumber, defineRow);
 };
 
 module.exports.solve = function(indexNumber) {
